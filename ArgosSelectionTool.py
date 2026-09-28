@@ -19,4 +19,22 @@ the_box = {
 
 the_box['x_min']
 
+# Copy and paste a line of data as the lineString variable value
+lineString = '10154641232,true,2019-05-14 13:37:52.000,-75.49356999999998,34.86216,,0.0,-127.0,4.0167976787E8,5141.0,424,"40",34.86216,34.86216,"0",-75.49356999999998,-75.49356999999998,6,0,3,61.0,381.0,10718.0,2466.0,150,187,2,0,"1",,,"argos-doppler-shift","Pterodroma hasitata","174441","HA09","Satellite tracking of black-capped petrels, 2019"'
+    
+# Use the split command to parse the items in lineString into a list object
+line_data = lineString.split(',')
 
+event-id,visible,timestamp,location-long,location-lat,algorithm-marked-outlier,argos:altitude,argos:best-level,argos:calcul-freq,argos:error-radius,argos:gdop,argos:iq,argos:lat1,argos:lat2,argos:lc,argos:lon1,argos:lon2,argos:nb-mes,argos:nb-mes-120,argos:nopc,argos:orientation,argos:pass-duration,argos:semi-major,argos:semi-minor,argos:sensor-1,argos:sensor-2,argos:sensor-3,argos:sensor-4,argos:valid-location-algorithm,comments,manually-marked-outlier,sensor-type,individual-taxon-canonical-name,tag-local-identifier,individual-local-identifier,study-name
+
+  
+# Assign variables to specfic items in the list
+event_id = line_data[0]   # Argos tracking event ID ("event-id")
+timestamp = line_data[2]  # Observation date ("timestamp")
+lat = line_data[4]        # Observation latitude  ("location-lat")
+lon = line_data[3]        # Observation longitude ("location-lon")
+lc  = line_data[14]        # Observation location class ("argos:lc")
+tag_id = line_data[33]     # Tag identifier ("tag-local-identifier")
+  
+# Print information to the use
+print (f"Record {event_id} indicates {tag_id} was seen at {lat}N and {lon}W on {timestamp}")
